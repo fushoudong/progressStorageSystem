@@ -10,7 +10,7 @@
       <Card title="支付笔数" :strongText="analytics_summary.orders" unit="笔" icon="dingdanshu"></Card>
       <Card title="用户数" :strongText="analytics_summary.customers" unit="人" icon="yonghushuliang"></Card>
       <DeivceCard
-        title="设备数"
+        title="在线用户数"
         :leftText="analytics_summary.devices"
         :rightText="analytics_summary.activeDevices"
         unit="项"

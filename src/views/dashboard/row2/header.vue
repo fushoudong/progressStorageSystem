@@ -1,7 +1,7 @@
 
 <template>
   <header>
-    <h3>运营分析</h3>
+    <h3>营销分析</h3>
     <div class="row1">
       <div class="item1">
         <div :class="`item ${type=='today'?'active':'none'}`" @click="selectTime('today')">今日</div>

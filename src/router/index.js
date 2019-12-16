@@ -38,6 +38,7 @@ export const constantRoutes = [
         ]
     },
     /* inject new router */
+    require("./modules/marketingCenter.js").default,
     require("./modules/orgManage.js").default,
     require("./modules/device.js").default,
     require("./modules/shelfs.js").default,
@@ -47,7 +48,7 @@ export const constantRoutes = [
     require("./modules/commodityManagement.js").default,
     require("./modules/privilegeManagement.js").default,
     require("./modules/distribution.js").default,
-    require("./modules/marketingCenter.js").default,
+    
     require("./modules/valueAddedManagement.js").default,
     require("./modules/order.js").default,
     { path: '*', redirect: '/404', hidden: true }
