@@ -3,27 +3,28 @@ const route = {
     path: '/shelfs',
     component: Layout,
     redirect: '/shelfs/index',
-    meta: { title: '货道管理', icon: 'shebeiguanli' },
+    meta: { title: '仓储管理', icon: 'shebeiguanli' },
     children: [
+        {
+            path: '/shelfs/status',
+            component: () => import('@/views/shelfs/status'),
+            name: "shelfs_status",
+            meta: { title: '库存变动', noCache: false, affix: false },
+        },
         {
             path: '/shelfs/index',
             component: () => import('@/views/shelfs/list'),
             name: "shelfs_list",
             meta: {
-                title: '货道模板', noCache: false, affix: false
+                title: '商品入库', noCache: false, affix: false
             },
         },
-        {
-            path: '/shelfs/status',
-            component: () => import('@/views/shelfs/status'),
-            name: "shelfs_status",
-            meta: { title: '设备货道', noCache: false, affix: false },
-        },
+    
         {
             path: '/shelfs/replenishment',
             component: () => import('@/views/shelfs/replenishment'),
             name: "shelfs_replenishment",
-            meta: { title: '货道补货', noCache: false, affix: false },
+            meta: { title: '库存盘点', noCache: false, affix: false },
         },
         {
             path: '/shelfs/replenishment/quxia',

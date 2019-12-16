@@ -1,7 +1,7 @@
 <template>
     <div class="valueAddedAtatistics">
         <div class="row">
-            <span>增值渠道：</span>
+            <span>销售统计：</span>
             <el-select v-model="params.channelId" @change="selChange" clearable placeholder="请选择">
                 <el-option label="全部" value=""></el-option>
                 <el-option v-for="item in channel" :key="item.id" :label="item.name" :value="item.id"></el-option>

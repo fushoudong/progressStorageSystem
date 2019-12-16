@@ -3,13 +3,13 @@ import Layout from '@/views/layout/Layout'
 const valueAddedManagement = {
     path: '/valueAddedManagement',
     component: Layout,
-    meta: {title: '增值管理', icon: 'guanggaoguanli', noCache: true, affix: false},
+    meta: {title: '报表管理', icon: 'guanggaoguanli', noCache: true, affix: false},
     children: [
         {
             path: '/valueAddedAtatistics/index',
             component: () => import('@/views/valueAddedManagement/valueAddedAtatistics/index'),
-            name: '增值统计',
-            meta: {title: '增值统计', noCache: false, affix: false}
+            name: '采购报表统计',
+            meta: {title: '采购报表统计', noCache: false, affix: false}
         },
         {
             path: '/valueAddedAtatistics/channelDetails',
@@ -23,8 +23,8 @@ const valueAddedManagement = {
             path: '/advertisingManagement/orderDetails',
             component: () => import('@/views/valueAddedManagement/valueAddedAtatistics/orderDetails'),
             hidden:true,
-            name: '订单详情',
-            meta: {title: '订单详情', noCache: false, affix: false},
+            name: '报表详情',
+            meta: {title: '报表详情', noCache: false, affix: false},
 
         },
         {

@@ -38,19 +38,24 @@ export const constantRoutes = [
         ]
     },
     /* inject new router */
-    require("./modules/marketingCenter.js").default,
-    require("./modules/orgManage.js").default,
-    require("./modules/device.js").default,
-    require("./modules/shelfs.js").default,
+    //采购管理
+    require("./modules/buy.js").default,
+    //销售管理
+    require("./modules/sell.js").default,
+    //仓储管理
+    require("./modules/store.js").default,
+    //商品管理
+    require("./modules/commodityManagement.js").default,
+     //供应商管理
+    require("./modules/providerManage.js").default,
+    //报表统计
+    require("./modules/valueAddedManagement.js").default,
     require("./modules/location.js").default,
     require("./modules/inventory.js").default,
-    require("./modules/advertisingManagement.js").default,
-    require("./modules/commodityManagement.js").default,
+    // require("./modules/advertisingManagement.js").default,
     require("./modules/privilegeManagement.js").default,
     require("./modules/distribution.js").default,
-    
-    require("./modules/valueAddedManagement.js").default,
-    require("./modules/order.js").default,
+   
     { path: '*', redirect: '/404', hidden: true }
 
 ];

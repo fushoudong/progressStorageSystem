@@ -19,12 +19,12 @@
                 <div class="grid-content bg-purple-light orgInfo">
                     <el-row class="infoTit">
                         <el-col :span="24">
-                            <div>组织信息</div>
+                            <div>供应商信息</div>
                         </el-col>
                     </el-row>
                     <div class="infoDetail">
                         <div class="infoDetailTit">
-                            <span>组织名称:</span>
+                            <span>供应商名称:</span>
                             <span>{{orgInfo.name}}</span>
                         </div>
                         <div class="infoDetailTit" v-if="orgInfo.idNumber">
@@ -32,7 +32,7 @@
                             <span>{{orgInfo.idNumber}}</span>
                         </div>
                         <div class="infoDetailTit" v-if="orgInfo.contactName">
-                            <span>联系人:</span>
+                            <span>负责人:</span>
                             <span>{{orgInfo.contactName}}</span>
                         </div>
                         <div class="infoDetailTit" v-if="orgInfo.contactName">

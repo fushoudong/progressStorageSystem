@@ -106,7 +106,7 @@
                         ]
                     },
                     {
-                        permission: {name: '货道管理', value: '27'},
+                        permission: {name: '供应商管理', value: '27'},
                         subpermissions: [
                             // { name: '货道方案列表', value: '28' },
                             {name: "货道配货", value: '28'},

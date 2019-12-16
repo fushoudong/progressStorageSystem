@@ -3,13 +3,13 @@ import Layout from '@/views/layout/Layout'
 const order = {
     path: '/orgManage',
     component: Layout,
-    meta: {title: '组织管理', icon: 'dingdan', noCache: true, affix: false},
+    meta: {title: '供应商管理', icon: 'dingdan', noCache: true, affix: false},
     children: [
         {
             path: '/orgManage/index',
             component: () => import('@/views/orgManage/orgManage/index'),
-            name: '组织管理',
-            meta: {title: '组织管理', noCache: false, affix: false}
+            name: '供应商管理',
+            meta: {title: '供应商管理', noCache: false, affix: false}
         },
         // {
         //     path: '/order/luckyFree',

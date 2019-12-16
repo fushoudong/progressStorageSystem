@@ -1,7 +1,7 @@
 <template>
   <div class="tableContainer">
     <div class="btns">
-      <el-button type="primary" @click="go2add">新增方案</el-button>
+      <el-button type="primary" @click="go2add">添加供应商</el-button>
     </div>
     <el-table
       :data="tableData"
@@ -10,7 +10,7 @@
       @row-click="go2edit"
     >
       <!-- <el-table-column label="编号" prop="id"></el-table-column> -->
-      <el-table-column label="名字" prop="name">
+      <el-table-column label="供应商名称" prop="name">
         <template slot-scope="scope">
           <div
             :to="'/shelfs/detail?id='+scope.row.id"
@@ -18,9 +18,8 @@
           >{{scope.row.name}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="货道数" width="80" prop="shelfCount"></el-table-column>
-      <el-table-column label="设备数" width="80"  prop="devices"></el-table-column>
-      <el-table-column label="类型"  width="100" prop="typeId">
+      <el-table-column label="商品数" width="80"  prop="devices"></el-table-column>
+      <el-table-column label="地址"  width="100" prop="typeId">
         <template slot-scope="scope">
           <div v-if="scope.row.deviceTypeId=='quxia'">酒店售货机</div>
           <div v-else="!scope.row.deviceTypeId=='quxia-vm'">自助售货机</div>

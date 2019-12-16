@@ -12,7 +12,7 @@
             </el-form-item>
             <el-form-item label="商品分类" prop="equipmentType">
                 <el-select v-model="ruleForm.categoryId" placeholder="商品分类">
-                    <el-option v-for="item in equipmentType" :label="item.name" :value="item.id"></el-option>
+                    <el-option v-for="(item,index) in equipmentType" :label="item.name" :value="item.id" :key='index'></el-option>
                 </el-select>
             </el-form-item>
 

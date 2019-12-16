@@ -8,8 +8,8 @@
                 </el-button>
             </el-row>
             <el-table
-                    :data="lists"
-                    style="width: 100%">
+                :data="lists"
+                style="width: 100%">
                 <el-table-column
                         prop="name"
                         label="图片">
@@ -19,49 +19,66 @@
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="名称">
+                        label="商品名称">
                 </el-table-column>
                 <el-table-column
                         prop="price"
-                        label="价格">
+                        label="商品售价">
                 </el-table-column>
                 <el-table-column
                         prop="costPrice"
-                        label="成本价">
+                        label="商品成本价">
+                </el-table-column>
+                <el-table-column
+                    prop="provider"
+                    label="供应商">
+                </el-table-column>
+                <el-table-column
+                    prop="maxStore"
+                    label="最大库存量">
+                </el-table-column>
+                <el-table-column
+                    prop="minStore"
+                    label="最小库存量">
+                </el-table-column>
+                <el-table-column
+                    prop="currentStore"
+                    label="当前库存量">
+                </el-table-column>
+                <el-table-column
+                    prop="description"
+                    label="商品描述">
                 </el-table-column>
                 <el-table-column
                         fixed="right"
-                        label="操作"
-                >
+                        label="操作">
                     <template slot-scope="lists">
-                        <span
-                                size="small"
-                                class="option-span"
-                                style="margin: 0 5px;"
-                                @click="editItem(lists.row.id)">
+                        <el-button
+                            type='primary'
+                            size="small"
+                            class="option-span"
+                            style="margin: 0 5px; color: #FFF"
+                            @click="editItem(lists.row.id)">
                             编辑
-                        </span>
-                        <span
-                                type="text"
-                                size="small"
-                                class="option-span"
-                                @click="removeItem(lists.row.id)"
-                        >
+                        </el-button>
+                        <el-button
+                            type="danger"
+                            size="small"
+                            class="option-span"
+                            @click="removeItem(lists.row.id)">
                             删除
-                        </span>
-
+                        </el-button>
 
                     </template>
                 </el-table-column>
             </el-table>
             <div class="pagination">
                 <el-pagination
-                        background
-                        :page-size="params.size"
-                        layout="prev, pager, next"
-                        :total="count"
-                        @current-change="currentChange"
-                >
+                    background
+                    :page-size="params.size"
+                    layout="prev, pager, next"
+                    :total="count"
+                    @current-change="currentChange">
                 </el-pagination>
             </div>
         </div>
@@ -115,21 +132,25 @@
             CommodityDetails
         },
         methods: {
-
             /**
              * 获取列表数据
              */
             getList() {
                 GET_LIST(this.params).then(res => {
                     res.map((item) => {
-
                         return item
                     });
-                    this.lists = res
+                    this.lists = res;
+                    for(let i = 0; i< this.lists.length ;i++){
+                        this.lists[i].provider = '供应商'+i;
+                        this.lists[i].description = '描述' + i;
+                        this.lists[i].maxStore = '1000';
+                        this.lists[i].minStore = '100';
+                        this.lists[i].currentStore = '500';
+                    }
+                    console.log('data',lists)
                 });
             },
-
-
             /**
              * 获取总数
              */
@@ -138,7 +159,6 @@
                     this.count = res
                 });
             },
-
             /**
              * 查询
              */
@@ -149,7 +169,6 @@
                 };
                 this.getList()
             },
-
             /**
              * 重置
              */
@@ -161,7 +180,6 @@
                 };
                 this.getList()
             },
-
             /**
              * 翻页
              */
@@ -173,7 +191,6 @@
                 };
                 this.getList()
             },
-
             /**
              * 删除商品
              */
@@ -201,7 +218,6 @@
 
                 })
             },
-
             /**
              * 编辑商品
              */
@@ -210,7 +226,6 @@
                 this.addMerchandise = true;
                 this.id = id
             },
-
             /**
              * 确定保存
              */
@@ -247,12 +262,9 @@
                             that.getList();
                             that.isLoading = false;
                         },1500);
-
-
                     }
                 });
             },
-
             /**
              * 取消弹层
              */
@@ -271,11 +283,10 @@
         background: #fff;
 
         .option-span {
-            color: #409EFF;
+            color: #FFFFFF;
             cursor: pointer;
         }
     }
-
     .pagination {
         margin-top: 20px;
     }

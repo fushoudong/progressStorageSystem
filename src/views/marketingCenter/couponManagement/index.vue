@@ -4,8 +4,8 @@
         <div class="table">
             <el-row>
                 <router-link :to="`/marketingCenter/couponManagement/couponDetails`" class="resetWH">
-                    <el-button type="primary">
-                        添加优惠券
+                    <el-button type="primary" style="margin: -10px auto 10px auto">
+                        采购添加
                     </el-button>
                 </router-link>
             </el-row>
