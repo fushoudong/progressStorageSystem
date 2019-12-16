@@ -2,7 +2,7 @@
   <div class="row3">
     <div class="item">
       <header>
-        <h3>场地销量榜</h3>
+        <h3>产品销量榜</h3>
         <DateHeader @sure="(date)=>{$data.localtionparams=date;getlocationdata()}"/>
       </header>
 
@@ -10,14 +10,16 @@
         <el-table-column prop="date" label="排名" width="60">
           <template slot-scope="scope">{{scope.$index+1}}</template>
         </el-table-column>
-        <el-table-column prop="name" label="场地名称"></el-table-column>
+        <el-table-column prop="name" label="产品名称"></el-table-column>
         <el-table-column prop="sale" label="销售金额(元)"></el-table-column>
         <el-table-column prop="units" label="销售数量(台)"></el-table-column>
+        <el-table-column prop="" label="盈利(元)"></el-table-column>
+      
       </el-table>
     </div>
     <div class="item">
       <header>
-        <h3>设备销量榜</h3>
+        <h3>供应商采购榜</h3>
         <DateHeader @sure="(date)=>{$data.devicesdataparams=date;getdevicesdata()}"/>
       </header>
       <el-table :data="devicesdata" style="width: 100%">

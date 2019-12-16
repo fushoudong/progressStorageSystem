@@ -1,29 +1,27 @@
 <template>
     <div class="formContainer">
         <el-form
-                ref="ruleForm"
-                :inline="true"
-                :model="dataFormInner"
-                class="demo-form-inline"
-                label-position="right"
-                label-width="100px"
-        >
+            ref="ruleForm"
+            :inline="true"
+            :model="dataFormInner"
+            class="demo-form-inline"
+            label-position="right"
+            label-width="100px">
             <div>
-                <el-form-item label="设备名称">
+                <el-form-item label="供应商名称">
                     <el-input v-model="dataFormInner.query" placeholder="公司名称"></el-input>
                 </el-form-item>
-                <el-form-item label="设备编号">
-                    <el-input v-model="dataFormInner.id" placeholder="设备编号"></el-input>
+                <el-form-item label="供应商编号">
+                    <el-input v-model="dataFormInner.id" placeholder="供应商编号"></el-input>
                 </el-form-item>
-                <el-form-item label="设备状态">
+                <el-form-item label="营业状态">
                     <el-select
-                            :clearable="true"
-                            v-model="dataFormInner.active"
-                            :value="''"
-                            placeholder="设备状态"
-                    >
-                        <el-option label="在线" :value="true"></el-option>
-                        <el-option label="离线" :value="false"></el-option>
+                        :clearable="true"
+                        v-model="dataFormInner.active"
+                        :value="''"
+                        placeholder="状态">
+                        <el-option label="在营业" :value="true"></el-option>
+                        <el-option label="未营业" :value="false"></el-option>
                     </el-select>
                 </el-form-item>
 

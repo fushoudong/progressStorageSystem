@@ -9,13 +9,13 @@
       label-width="100px"
     >
       <div>
-        <el-form-item label="设备名称">
+        <el-form-item label="供应商名称">
           <el-input v-model="formData.query" placeholder="公司名称"></el-input>
         </el-form-item>
         <el-form-item label="设备编号">
           <el-input v-model="formData.id" placeholder="设备编号"></el-input>
         </el-form-item>
-        <el-form-item label="设备状态">
+        <el-form-item label="营业状态">
           <el-select :clearable="true" v-model="formData.active" :value="''" placeholder="设备状态">
             <el-option label="在线" :value="true"></el-option>
             <el-option label="离线" :value="false"></el-option>

@@ -7,63 +7,61 @@
                 </el-button>
             </el-row>
             <el-table
-                    :data="lists"
-                    @row-click="openDetails"
-                    style="width: 100%">
+                :data="lists"
+                @row-click="openDetails"
+                stripe
+                highlight-current-row
+                style="width: 100%">
                 <el-table-column
-                        prop="name"
-                        label="分类名称">
+                    prop="name"
+                    label="分类名称">
                     <template slot-scope="lists">
                         <span :class="{'select':lists.row.isSel}"> {{lists.row.name}}  </span>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        align="center"
-                        width="80"
-                        label="商品(件)">
+                    prop='number'
+                    align="center"
+                    width="80"
+                    label="商品(件)">
                     <template slot-scope="lists">
                         <span :class="{'select':lists.row.isSel}"> {{lists.row.products}}  </span>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        align="center"
-                        width="50"
-                        label="排序">
+                    align="center"
+                    width="50"
+                    label="排序">
                     <template slot-scope="lists">
                         <span :class="{'select':lists.row.isSel}"> {{lists.row.displayOrder}}  </span>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        align="createdDate"
-                        label="创建时间">
+                    align="createdDate"
+                    label="创建时间">
                     <template slot-scope="lists">
                         <span :class="{'select':lists.row.isSel}"> {{lists.row.createdDate | filterCreatedDate}}  </span>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        width="100"
-                        fixed="right"
-                        label="操作"
-                >
+                    width="100"
+                    fixed="right"
+                    label="操作">
                     <template slot-scope="lists">
-                            <span
-                                    type="text"
-                                    size="small"
-                                    class="option-span"
-                                    @click.stop.prevent="opiClassification(lists.row)"
-                            >
+                        <span
+                            type="text"
+                            size="small"
+                            class="option-span"
+                            @click.stop.prevent="opiClassification(lists.row)">
                             编辑
                         </span>
                         <span
-                                type="text"
-                                size="small"
-                                class="option-span"
-                                @click.stop.prevent="removeItem(lists.row.id)"
-                        >
+                            type="text"
+                            size="small"
+                            class="option-span"
+                            @click.stop.prevent="removeItem(lists.row.id)">
                             删除
                         </span>
-
-
                     </template>
                 </el-table-column>
             </el-table>
@@ -76,11 +74,11 @@
                     :visible.sync="isAdd">
                 <div class="addClassification">
                     <span>分类名称: </span>
-                    <el-input style="width: 70%" v-model="classification.name" placeholder="请输入分类名称"></el-input>
+                    <el-input style="width: 70%" v-model="addName" placeholder="请输入分类名称"></el-input>
                 </div>
                 <div class="addClassification">
                     <span>排序: </span>
-                    <el-input style="width: 70%" type="number" v-model="classification.displayOrder"
+                    <el-input style="width: 70%" type="number" v-model="addSort"
                               placeholder="请输入排序"></el-input>
                 </div>
                 <div slot="footer" class="dialog-footer">
@@ -116,11 +114,69 @@
                 titleName: '添加分类',
                 temporaryValue: '',
                 lists: [],
+                addName: '',
+                addSort: 0,
+                addDate: '',
+                addNumber: '',
                 classification: {
                     id: '',
                     name: '',
                     displayOrder: '',
-                }
+                },
+                row:{},//编辑行数据
+                testData:[
+                    {
+                        classification: '食品类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '服装类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '日用品类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '家具类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '办公用品',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '装饰类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '家用电器类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '纺织品类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '厨房用品',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    },
+                    {
+                        classification: '电子产品类',
+                        number: 0,
+                        createdDate: '2019-12-16 17:36:11',
+                    }
+                ],
+
             }
         },
         props: ['params', 'success'],
@@ -143,11 +199,6 @@
         methods: {
             getList(params) {
                 let idx = this.index;
-                // console.log(idx);
-                // console.log(this.lists.length);
-                // if (idx == this.lists.length) {
-                //     idx = 0
-                // }
                 GET_LIST_CATEGORIES(params).then(res => {
                     res.map((item, index) => {
                         item.edit = false;
@@ -158,6 +209,13 @@
                         return item
                     });
                     this.lists = res;
+                    for(let i = 0; i < this.lists.length;i++){
+                        this.lists[i].name = this.testData[i].classification;
+                        this.testData[i].number = (i+1);
+                        this.lists[i].products = this.testData[i].number;
+                        this.lists[i].createdDate = this.testData[i].createdDate;
+                    }
+                    console.log('res',this.testData);
                     this.$emit('currId', this.lists[idx].id);
                 });
             },
@@ -186,16 +244,17 @@
              * 分类操作
              */
             opiClassification(row) {
+                console.log('row',row);
                 this.isAdd = true;
                 if (row.id) {
-                    this.classification = {
-                        id: row.id,
-                        name: row.name,
-                        displayOrder: row.displayOrder,
-                    }
+                    let obj = new Object();
+                    obj.classification = this.addName;
+                    obj.number = this.addNumber;
+                    this.addDate = Date().now;
+                    obj.createDate = this.addDate;
+                    console.log('add',obj);
                 }
             },
-
 
             /**
              * 删除

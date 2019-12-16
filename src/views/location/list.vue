@@ -2,10 +2,10 @@
   <div class="pageContainer">
     <div class="formContainer">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
-        <el-form-item label="场地名称">
-          <el-input v-model="formInline.query" placeholder="场地名称"></el-input>
+        <el-form-item label="供应商名称">
+          <el-input v-model="formInline.query" placeholder="供应商名称"></el-input>
         </el-form-item>
-        <el-form-item label="行业类型">
+        <el-form-item label="供应商类型">
           <el-select :clearable="true" v-model="formInline.typeId" placeholder="设备类型">
             <el-option
               :label="item.name"
@@ -22,18 +22,18 @@
     </div>
     <div class="tableContainer">
       <div class="btns">
-        <el-button type="primary" @click="go2add">添加场地</el-button>
+        <el-button type="primary" @click="go2add" style="margin: -5px auto 10px auto">添加供应商</el-button>
       </div>
       <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="id" label="日期"></el-table-column>
-        <el-table-column prop="name" label="姓名"></el-table-column>
-        <el-table-column prop="image" label="图片">
+        <el-table-column prop="name" label="供应商名称"></el-table-column>
+        <el-table-column prop="image" label="供应商徽标">
           <div slot-scope="scope">
             <img :src="scope.row.image" alt width="100" height="100">
           </div>
         </el-table-column>
-        <el-table-column prop="typeName" label="设备类型"></el-table-column>
-        <el-table-column prop="typeName" label="场地地址">
+        <el-table-column prop="typeName" label="供应商类型"></el-table-column>
+        <el-table-column prop="typeName" label="供应商地址">
           <template slot-scope="scope">
             <div>{{scope.row.locationName}}</div>
             <div>
@@ -44,14 +44,14 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="devices" label="设备数"></el-table-column>
+        <el-table-column prop="devices" label="产品总类数"></el-table-column>
 
         <!-- <el-table-column prop="createdDate" label="创建时间"></el-table-column> -->
         <el-table-column prop="createdDate" label="操作">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="go2edit(scope.row)">编辑</el-button>
             <el-button type="text" size="small" @click="deleteItem(scope.row)">删除</el-button>
-            <el-button type="text" size="small" @click="go2addDevice(scope.row)">设备管理</el-button>
+            <el-button type="text" size="small" @click="go2addDevice(scope.row)">查看详情</el-button>
           </template>
         </el-table-column>
       </el-table>

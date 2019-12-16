@@ -1,3 +1,4 @@
+<!--添加供应商-->
 <template>
   <el-dialog width="800px" :visible.sync="addmodalvisibale">
     <el-form :inline="true" v-loading="loading" ref="form" :model="fromDataCopy">
@@ -13,10 +14,10 @@
         </el-form-item>
       </div>
       <div style="display:flex;">
-        <el-form-item label="场地名称" :rules="[{required:true,message:'不能为空'}]" prop="name">
-          <el-input v-model="fromDataCopy.name" placeholder="场地名称"></el-input>
+        <el-form-item label="联系人邮箱" :rules="[{required:true,message:'不能为空'}]" prop="name">
+          <el-input v-model="fromDataCopy.name" placeholder="邮箱"></el-input>
         </el-form-item>
-        <el-form-item label="行业类型" :rules="[{required:true,message:'不能为空'}]" prop="name">
+        <el-form-item label="厂商类型" :rules="[{required:true,message:'不能为空'}]" prop="name">
           <el-select :clearable="true" v-model="fromDataCopy.typeId" placeholder="类型">
             <el-option
               :key="item.id"
@@ -44,7 +45,7 @@
             style="width:640px;"
             type="textarea"
             v-model="fromDataCopy.street"
-            placeholder="街道"
+            placeholder="所处街道"
             Î
           ></el-input>
         </el-form-item>

@@ -25,20 +25,16 @@
                         label="成本价">
                 </el-table-column>
                 <el-table-column
-                        fixed="right"
-                        label="操作"
-                >
+                    fixed="right"
+                    label="操作">
                     <template slot-scope="lists">
                         <span
-                                type="text"
-                                size="small"
-                                class="option-span"
-                                @click="removeItem(lists.row.id)"
-                        >
+                            type="text"
+                            size="small"
+                            class="option-span"
+                            @click="removeItem(lists.row.id)">
                             删除
                         </span>
-
-
                     </template>
                 </el-table-column>
             </el-table>
